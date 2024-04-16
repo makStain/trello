@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head th:insert="~{link}">
+    <meta charset="UTF-8">
+    <title>trello</title>
+</head>
+<body>
+<div class="container">
+    <div th:insert="~{navbar}"></div>
+    <br>
+    <div layout:fragment="content">
+        <button type="button" class="btn">+ New Folder</button>
+        <br><br>
+        <div class="card" th:each="folder : ${folders}">
+            <h5 class="card-header"></h5>
+            <div class="card-body">
+                <h5 class="card-title" th:text="folder.getName()"></h5>
+                <a th:href="@{'/details/'+${folder.getId()}}" class="btn btn-primary">Details</a>
+                <form th:action="@{'/deleteFolder/'+${folder.getId()}}" method="post" class="mb-0">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

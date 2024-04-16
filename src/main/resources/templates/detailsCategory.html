@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head th:insert="~{link}">
+    <meta charset="UTF-8">
+    <title>Categories</title>
+</head>
+<body>
+<div class="container">
+    <div th:insert="~{navbar}"></div>
+    <br>
+    <div layout:fragment="content">
+        <div class="container mt-5">
+            <h2 th:text="${category.name}">Name Category</h2>
+            <a th:href="@{'/updateCategory/' + ${category.id}}" class="btn btn-warning">Обновить</a>
+
+            <!-- Форма для удаления категории -->
+            <form th:action="@{'/deleteCategory/' + ${category.id}}" method="post" style="display:inline;">
+                <input type="hidden" name="_method" value="delete" />
+                <button type="submit" class="btn btn-danger">Удалить</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
